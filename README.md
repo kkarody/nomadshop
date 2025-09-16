@@ -48,6 +48,16 @@ pandas, psycopg2, SQLAlchemy, dotenv
 **GitHub** – version control and project hosting
 
 ---
+## Some SQL queries and small Python script from main.py
+![sql queries](img/1sql.jpg)
+![sql queries](img/2sql.jpg)
+![sql queries](img/3sql.jpg)
+![sql queries](img/4sql.jpg)
+![sql queries](img/5sql.jpg)
+
+![python script](img/1main.jpg)
+![python script](img/2main.jpg)
+---
 
 ## How to Run the Project
 
