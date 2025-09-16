@@ -27,11 +27,6 @@ This project demonstrates how to:
 ![Analytics](img/2.jpg)
 ![Analytics](img/3.jpg)
 
-
-## How to Run the Project
-Got it 🙌
-Here’s your **“How to Run the Project”** section rewritten in English, short and clear:
-
 ---
 
 ## How to Run the Project
