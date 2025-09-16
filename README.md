@@ -17,18 +17,6 @@ This project demonstrates how to:
 - Visualize results with Apache Superset (or Python).
 
 ---
-
-## Screenshots
-### ER Diagram
-![ERD](img/erd.jpg)
-
-### Main Analytics Example
-![Analytics](img/1.jpg)
-![Analytics](img/2.jpg)
-![Analytics](img/3.jpg)
-
----
-
 ### Tools and Resources
 
 **PostgreSQ**L – database management
@@ -48,6 +36,18 @@ pandas, psycopg2, SQLAlchemy, dotenv
 **GitHub** – version control and project hosting
 
 ---
+
+## Screenshots
+### ER Diagram
+![ERD](img/erd.jpg)
+
+### Main Analytics Example
+![Analytics](img/1.jpg)
+![Analytics](img/2.jpg)
+![Analytics](img/3.jpg)
+
+---
+
 ## Some SQL queries and small Python script from main.py
 ![sql queries](img/1sql.jpg)
 ![sql queries](img/2sql.jpg)
