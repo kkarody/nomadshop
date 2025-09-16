@@ -29,6 +29,26 @@ This project demonstrates how to:
 
 ---
 
+### Tools and Resources
+
+**PostgreSQ**L – database management
+
+**pgAdmin 4** – DB inspection and ERD
+
+**Python** – scripts and data analysis
+
+pandas, psycopg2, SQLAlchemy, dotenv
+
+**Matplotlib / Seaborn / Plotly** – visualization in Python
+
+**Apache Superset** – dashboard creation
+
+**VS Code** – development environment
+
+**GitHub** – version control and project hosting
+
+---
+
 ## How to Run the Project
 
 1. **Download the project**
