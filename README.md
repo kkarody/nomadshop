@@ -65,8 +65,8 @@ pandas, psycopg2, SQLAlchemy, dotenv
    Clone the repository from GitHub and go to the project folder:
 
 ```bash
-git clone https://github.com/<your_username>/silk-road-retail-insights.git
-cd silk-road-retail-insights
+git clone https://github.com/<kkarody>/nomadshop.git
+cd nomadshop
 ```
 
 2. **Set up the environment**
