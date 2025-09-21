@@ -37,27 +37,8 @@ pandas, psycopg2, SQLAlchemy, dotenv
 
 ---
 
-## Screenshots
-### ER Diagram
+##  ER Diagram
 ![ERD](img/erd.jpg)
-
-### Main Analytics Example
-![Analytics](img/1.jpg)
-![Analytics](img/2.jpg)
-![Analytics](img/3.jpg)
-
----
-
-## Some SQL queries and small Python script from main.py
-![sql queries](img/1sql.jpg)
-![sql queries](img/2sql.jpg)
-![sql queries](img/3sql.jpg)
-![sql queries](img/4sql.jpg)
-![sql queries](img/5sql.jpg)
-
-![python script](img/1main.jpg)
-![python script](img/2main.jpg)
----
 
 ## How to Run the Project
 
