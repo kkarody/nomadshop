@@ -22,57 +22,42 @@ except Exception as e:
 
 # SQL-запросы
 queries = {
+    # 0. Пример: первые 10 заказов
     "sample_limit": """
         SELECT * FROM orders LIMIT 10;
     """,
 
+    # 1. Revenue by month
     "monthly_revenue": """
-        WITH monthly AS (
-          SELECT DATE_TRUNC('month', o.order_date) AS mon,
-                 SUM(oi.quantity * oi.price_at_purchase) AS revenue
-          FROM orders o
-          JOIN order_items oi ON oi.order_id = o.order_id
-          GROUP BY 1
-        )
-        SELECT mon, revenue
-        FROM monthly
-        ORDER BY mon;
+        SELECT DATE_TRUNC('month', o.order_date) AS month,
+               SUM(oi.quantity * oi.price_at_purchase) AS revenue
+        FROM orders o
+        JOIN order_items oi ON oi.order_id = o.order_id
+        GROUP BY 1
+        ORDER BY 1;
     """,
 
+    # 2. Top 10 products by revenue
     "top_products": """
-        SELECT p.product_id, p.product_name,
+        SELECT p.product_name,
                SUM(oi.quantity * oi.price_at_purchase) AS revenue
         FROM order_items oi
         JOIN products p ON p.product_id = oi.product_id
-        GROUP BY p.product_id, p.product_name
+        GROUP BY p.product_name
         ORDER BY revenue DESC
         LIMIT 10;
     """,
 
+    # 3. Average order value
     "average_order_value": """
-        SELECT ROUND(AVG(total_price),2) AS avg_order_value
+        SELECT ROUND(AVG(total_price), 2) AS avg_order_value
         FROM orders;
     """,
 
-    "payment_methods": """
-        SELECT payment_method, COUNT(*) AS cnt, ROUND(SUM(amount),2) AS total
-        FROM payment
-        GROUP BY payment_method
-        ORDER BY total DESC;
-    """,
-
-    "shipment_speed": """
-        SELECT carrier,
-               ROUND(AVG(delivery_date - shipment_date),2) AS avg_days
-        FROM shipments
-        WHERE delivery_date IS NOT NULL AND shipment_date IS NOT NULL
-        GROUP BY carrier
-        ORDER BY avg_days;
-    """,
-
-    "customer_top_spenders": """
+    # 4. Top 10 customers by total purchases
+    "top_customers": """
         SELECT c.customer_id, c.first_name, c.last_name,
-               ROUND(SUM(o.total_price),2) AS total_spent
+               SUM(o.total_price) AS total_spent
         FROM customers c
         JOIN orders o ON o.customer_id = c.customer_id
         GROUP BY c.customer_id, c.first_name, c.last_name
@@ -80,16 +65,66 @@ queries = {
         LIMIT 10;
     """,
 
+    # 5. Payment method popularity
+    "payment_methods": """
+        SELECT payment_method,
+               COUNT(*) AS cnt,
+               SUM(amount) AS total_amount
+        FROM payment
+        GROUP BY payment_method
+        ORDER BY total_amount DESC;
+    """,
+
+    # 6. Average delivery time by carrier
+    "shipment_speed": """
+        SELECT carrier,
+               ROUND(AVG(delivery_date - shipment_date), 2) AS avg_days
+        FROM shipments
+        WHERE delivery_date IS NOT NULL AND shipment_date IS NOT NULL
+        GROUP BY carrier
+        ORDER BY avg_days;
+    """,
+
+    # 7. Average product rating (top 10)
     "product_ratings": """
         SELECT p.product_name,
                ROUND(AVG(r.rating),2) AS avg_rating,
-               COUNT(r.review_id) AS reviews_count
+               COUNT(*) AS reviews_count
         FROM reviews r
         JOIN products p ON r.product_id = p.product_id
         GROUP BY p.product_name
-        HAVING COUNT(r.review_id) > 5
-        ORDER BY avg_rating DESC, reviews_count DESC
+        ORDER BY avg_rating DESC
         LIMIT 10;
+    """,
+
+    # 8. Number of orders per customer (top 10)
+    "orders_per_customer": """
+        SELECT c.first_name, c.last_name,
+               COUNT(o.order_id) AS orders_count
+        FROM customers c
+        JOIN orders o ON o.customer_id = c.customer_id
+        GROUP BY c.first_name, c.last_name
+        ORDER BY orders_count DESC
+        LIMIT 10;
+    """,
+
+    # 9. Product categories by total sales
+    "category_revenue": """
+        SELECT p.category,
+               SUM(oi.quantity * oi.price_at_purchase) AS revenue
+        FROM order_items oi
+        JOIN products p ON oi.product_id = p.product_id
+        GROUP BY p.category
+        ORDER BY revenue DESC;
+    """,
+
+    # 10. Average order amount by year
+    "yearly_avg_order": """
+        SELECT DATE_PART('year', order_date) AS year,
+               ROUND(AVG(total_price),2) AS avg_order
+        FROM orders
+        GROUP BY 1
+        ORDER BY 1;
     """
 }
 
