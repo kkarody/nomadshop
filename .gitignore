@@ -1,6 +1,9 @@
 .venv/
+venv/
+
 __pycache__/
 *.pyc
 .env
 .ipynb_checkpoints/
 .DS_Store
+superset_config.py
