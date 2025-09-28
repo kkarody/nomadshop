@@ -1,0 +1,16 @@
+# Core Superset (совместим с pandas 1.5.x)
+apache-superset==3.0.0
+
+# Database connector
+psycopg2-binary==2.9.9
+
+# Fix for Superset + Flask-Limiter compatibility
+Flask-Limiter==2.6.3
+
+# Dependencies (совместимые версии)
+SQLAlchemy==1.4.52
+pandas==1.5.3
+plotly==5.24.1
+matplotlib==3.9.2
+openpyxl==3.1.5
+python-dotenv==1.0.1

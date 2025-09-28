@@ -95,4 +95,19 @@ python src/main.py
 The terminal will show query results (for example, monthly revenue and top products).
 
 
+## 📊 Charts
+Generated charts are saved in `/charts/`:
 
+1. Pie – Revenue share by category  
+2. Bar – Top-10 products by revenue  
+3. Horizontal Bar – Average order value by customer address  
+4. Line – Monthly revenue by category  
+5. Histogram – Distribution of order totals  
+6. Scatter – Product price vs quantity sold  
+
+## To update charts after updating the database, run:
+
+python -m src.analytics
+
+## ⏩ To run the time slider
+python -c "from src.analytics import plotly_time_slider_sales_by_month_and_category as f; f(True)"
